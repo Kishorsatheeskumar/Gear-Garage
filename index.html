@@ -1,0 +1,148 @@
+<!-- gear_garage.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gear Garage</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="button.css">
+    <link rel="icon" href="Images/repair-shop.ico">
+</head>
+<body>
+    <header>
+        <div class="logo">Gₑₐᵣ GₐᵣₐGₑ</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<section id="home">
+    <h1>Welcome to Gear Garage</h1>
+    <p>Your go-to destination for expert bike and car mechanic services. We are dedicated to providing high-quality, reliable, and efficient maintenance and repair solutions for all types of vehicles.</p>
+    <!-- <button onclick="document.getElementById('appointment').scrollIntoView();">Book Your Appointment</button> -->
+    <main id="app">
+		<button onclick="document.getElementById('appointment').scrollIntoView();">
+			<span class="text" style="color: rgb(220, 205, 205);">Book Your Appointment</span>
+			<span class="shimmer"></span>
+		</button>
+	</main>
+</section>
+
+<section id="about">
+    <h2>About Us</h2>
+    <p>At Gear Garage, our mission is to keep your vehicles running smoothly and safely. We aim to deliver exceptional service that exceeds your expectations, whether it’s routine maintenance or complex repairs.</p>
+    <h3>Why Choose Us?</h3>
+    <ul>
+        <li>Experienced Professionals: Skilled mechanics with extensive automotive knowledge.</li>
+        <li>Reliable Service: Commitment to getting the job done right the first time.</li>
+        <li>Affordable Pricing: Competitive prices without compromising quality.</li>
+        <li>Excellence: Continuous improvement and dedication to excellence in all our services.</li>
+    </ul>
+</section>
+
+    <section id="appointment">
+        <h2><center>Book Your Appointment</center></h2>
+        <form id = appointmentForm>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="contact">Contact:</label>
+            <input type="text" id="contact" name="contact" required>
+            
+            <label for="email">Mail ID:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="service">Service:</label>
+            <select id="service" name="service">
+                <option value="maintenance">Maintenance</option>
+                <option value="repair">Repair</option>
+                <option value="parts">Parts/Accessories</option>
+            </select>
+            
+            <label for="branch">Branch:</label>
+            <div>
+                <input type="radio" id="adyar" name="branch" value="Adyar" required>
+                <label for="adyar">Adyar</label>
+                
+                <input type="radio" id="porur" name="branch" value="Porur">
+                <label for="porur">Porur</label>
+            </div>
+            
+            <!-- <button type="submit">Submit</button> -->
+            <main id="app">
+                <button>
+                    <span class="text" style="color: rgb(220, 205, 205);">SUBMIT</span>
+                    <span class="shimmer"></span>
+                </button>
+            </main>
+        </form>
+    </section>
+    
+
+<section id="services">
+    <h2>Our Services</h2>
+    <div class="gallery">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</section>
+
+<section id="contact" >
+
+    <h2 >Contact Us </h2>
+    <p>34, DD Road, Shanti Colony, Adyar, Chennai -28, Tamil Nadu</p>
+    <p>Phone: 0427 345788</p>
+    <p>Email: <a href="mailto:gear_garage@chennai.com">gear_garage@chennai.com</a></p>
+    <h3>Branches</h3>
+    <p>Adyar: 34, DD Road, Shanti Colony, Adyar, Chennai -28, Tamil Nadu</p>
+    <p>Porur: 23, Ram Nagar, Porur, Chennai-31, Tamil Nadu</p>
+    <p>Phone: 0427 698574</p>
+    <p>Instagram: <a href="https://instagram.com/gear_garage_chennai">@gear_garage_chennai</a></p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2023 Gear Garage. All rights reserved.</p>
+</footer>
+
+    <!-- Add your contact section, footer, etc. -->
+
+    <script>
+        document.getElementById('appointmentForm').addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent default form submission
+        
+            // Gather form data
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData.entries());
+        
+            try {
+                // Send data to server for OTP generation
+                localStorage.setItem('email', data.email);
+                const response = await fetch('http://localhost:3000/send-otp', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+        
+                if (response.ok) {
+                    // Redirect to OTP validation page
+                    window.location.href = 'otp.html';
+                } else {
+                    console.error('Error submitting form');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+        </script>
+</body>
+</html>

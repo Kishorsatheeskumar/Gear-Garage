@@ -1,0 +1,201 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: larger;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #15439d;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+}
+
+header .logo {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+section {
+    padding: 170px;
+    margin: 20px 0;
+}
+
+section#home {
+    background-color: #f4f4f4;
+    text-align: center;
+    background-image: url("Images/1.png");
+    background-size: cover;
+    background-position: center;
+}
+
+
+section#home h1,p,h2,h3,ul {
+    margin-top: 0;
+    color: #ddd;
+}
+
+section#home button {
+    background-color: #15439d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+section#home button:hover {
+    background-color: #15439d;
+}
+
+section#about {
+    background-image: url("Images/2.png");
+    background-size: cover;
+    background-position: center;
+   
+}
+
+
+h2 {
+    border-bottom: 2px solid #15439d;
+    padding-bottom: 5px;
+}
+
+section#services {
+    background-color: black;
+}
+
+.gallery {
+    display: flex;
+    gap: 1rem;
+    height: 500px;
+    width: 95%;
+}
+.gallery > div {
+    flex : 1;
+    transition: all 1s;
+    height: 100%;
+    width: 95%;
+    border: 2px solid #15439d;
+    border-radius: 20px;
+}
+
+.gallery > div:nth-child(1) {
+    background: url("Images/3-4.png");
+    background-size: cover;
+    background-position: center;
+}   
+
+.gallery > div:nth-child(2) {
+    background: url("Images/3-5.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.gallery > div:nth-child(3) {
+    background: url("Images/3-6.png");
+    background-size: cover;
+    background-position: center;    
+}
+
+.gallery > div:hover{
+    flex: 1.5;
+}
+.service-image {
+    flex: 1;
+    margin: 10px;
+    max-width: 90%;
+}
+
+section#appointment {
+    background-image: url("Images/appint1.jpeg");
+    background-size: cover; 
+    background-position: center;
+    
+}
+section#contact  {
+    background-image: url("Images/4.png");
+    background-size: cover; 
+    background-position: center;
+    color: black;
+}
+section#confirmation{
+    background-image: url("Images/6.png");
+    background-size: cover; 
+    background-position: center;
+    color: white;
+    
+}
+section#Verify-Otp{
+    background-image: url("Images/contact_image.png");
+    background-size: cover; 
+    background-position: center;
+    color: white;
+
+}
+section#otp{
+    background-image: url("Images/6.png");
+    background-size: cover; 
+    background-position: center;
+    color: white;
+    
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+form label {
+    margin-top: 10px;
+    color: gold;
+    font-weight:bolder ;
+}
+
+form input, form select, form button {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 40px;
+}
+
+form button {
+    background-color: #15439d;
+    color: gold;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #15439d;
+}
+
+footer {
+    background-color: #15439d;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+

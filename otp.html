@@ -1,0 +1,76 @@
+<!-- otp.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify OTP</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="button.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Gₑₐᵣ GₐᵣₐGₑ</div>
+        <nav>
+            <ul>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="Verify-Otp">
+    <center>
+    <h1>Verify OTP</h1>
+    </center>
+    
+    <form id="otpForm" action="/validate-otp" method="POST">
+        <label for="otp">Enter OTP sent to your email:</label>
+        <input type="text" id="otp" name="otp" required>
+
+        <!-- Hidden input field to pass email -->
+        <input type="hidden" id="email" name="email" value="">
+
+        <button type="submit" style="background-color: #15439d">
+            <span class="text" style="color: rgb(255, 255, 255); ;">Verify</span>
+            <span class="shimmer"></span>
+        </button>
+    </form>
+    
+    </section>
+
+    <script>
+    // Assuming you have stored the user's email in localStorage after OTP is sent
+    const email = localStorage.getItem('email');
+    document.getElementById('email').value = email;
+
+    document.getElementById('otpForm').addEventListener('submit', async (event) => {
+        event.preventDefault(); // Prevent default form submission
+
+        const formData = new FormData(event.target);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+            // Send OTP and email to server for validation
+            const response = await fetch('http://localhost:3000/validate-otp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+                window.location.href = 'confirmation.html?status=success';
+            } else {
+                console.error('Invalid OTP');
+                window.location.href = 'confirmation.html?status=error';
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    });
+    </script>
+</body>
+</html>
